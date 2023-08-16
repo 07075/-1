@@ -1,0 +1,13 @@
+select classes,
+count(id_teacher) as users_in_month
+from
+(select id_teacher, 
+date_part('month', class_start_datetime) as class_month,
+count(distinct id_class) as classes
+from skyeng_db.classes
+where class_status in ('failed_by_student', 'success') and 
+date_trunc('year', class_start_datetime) = '2016-01-01' and 
+class_type != 'trial'
+group by 1, 2) as classes_stats
+group by classes
+order by classes

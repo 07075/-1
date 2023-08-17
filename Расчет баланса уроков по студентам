@@ -1,6 +1,6 @@
 with first_payments as
             (select user_id
-                ,min(transaction_datetime :: date) as first_payment_date
+                , min(transaction_datetime :: date) as first_payment_date
             from skyeng_db.payments
                 where status_name = 'success' 
                 group by user_id 

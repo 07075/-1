@@ -49,7 +49,7 @@ with first_payments as
                 left join classes_by_dates as classes_by_dates
                 on all_dates_by_user.user_id = classes_by_dates.user_id
                 and all_dates_by_user.dt = classes_by_dates.class_date),
-                balances as
+        balances as
                (select payments_by_dates_cumsum.user_id,
                 payments_by_dates_cumsum.dt,
                 transaction_balance_change,

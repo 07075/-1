@@ -6,7 +6,7 @@ with first_payments as
                 group by user_id 
                 order by user_id asc),
         all_dates as
-            (select distinct (class_start_datetime :: date)  as dt
+            (select distinct (class_start_datetime :: date) as dt
                 from skyeng_db.classes
                 where class_start_datetime >= '2016-01-01' and class_start_datetime < '2017-01-01'
                 group by dt),

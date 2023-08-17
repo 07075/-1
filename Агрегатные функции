@@ -1,0 +1,13 @@
+SELECT platform_name
+    , count(distinct name) as сount_distinct_name 
+    , sum(global_sales) as sum_global_sales 
+    , count(distinct publisher) as count_publisher
+    , avg(global_sales) as global_sales_per_game
+    , sum(global_sales)*1.0 / count(distinct publisher) as sales_per_publisher
+FROM game_db
+WHERE genre = 'Shooter'
+ and sales_start >= '2010-01-01'
+ group by platform_name
+ having sum(global_sales) >= 50 
+ and count(distinct name) >= 10
+ order by sum_global_sales desc

@@ -22,4 +22,4 @@ select
 from skybank.late_collection_clients as a
 left join skybank.region_dict as b
 on a.id_city = b.id_city
-order by name_city
+order by  name_city
